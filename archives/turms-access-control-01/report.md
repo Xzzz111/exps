@@ -7,7 +7,7 @@
 
 ## AFFECTED AND/OR FIXED VERSION(S)
 
-- **Submitter**: s1ain
+- **Submitter**: sh7err
 - **Affected Version(s)**: Turms v0.10.0-SNAPSHOT and earlier versions
 - **Software Link**: https://github.com/turms-im/turms
 - **Fixed Version**: Not fixed yet
