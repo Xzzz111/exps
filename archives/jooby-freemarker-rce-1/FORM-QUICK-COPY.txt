@@ -1,0 +1,72 @@
+CVE APPLICATION FORM - QUICK COPY VERSION
+==========================================
+Copy each section below into the corresponding field in the CVE request form.
+
+=== Vulnerability Type Info ===
+Code Execution
+
+=== Vendor of the Product(s) Info ===
+Jooby Project
+https://jooby.io
+https://github.com/jooby-project/jooby
+
+=== Affected Product(s)/Code Base Info ===
+Product: Jooby FreeMarker Module (io.jooby:jooby-freemarker)
+Version: All versions from 1.0.0 to 4.0.11-SNAPSHOT (inclusive)
+Fixed Version: None (not yet patched)
+
+=== Has Vendor Confirmed or Acknowledged the Vulnerability? ===
+No
+
+=== Attack Type Info ===
+Remote Code Execution (RCE)
+
+=== Impact Info ===
+[x] Code Execution
+[x] Information Disclosure
+[x] Denial of Service
+[ ] Escalation of Privileges
+[x] Other: Full Server Compromise
+
+=== Affected Component(s) ===
+modules/jooby-freemarker/src/main/java/io/jooby/freemarker/FreemarkerModule.java (line 127), io.jooby.freemarker.FreemarkerModule class constructor, FreeMarker template rendering engine configuration
+
+=== Attack Vector(s) ===
+Attack Vector 1 - User-Controlled Template Content: Attacker provides malicious FreeMarker template code through application input (e.g., query parameters, POST body, file upload). Application renders the user-provided template using Jooby's FreemarkerModule. Malicious template uses FreeMarker's ?new built-in to instantiate dangerous Java classes. Example payload: <#assign ex="freemarker.template.utility.Execute"?new()>${ex("whoami")}.
+
+Attack Vector 2 - User-Controlled Template Model Data: Attacker controls data passed to template rendering (e.g., JSON input mapped to template model). Template accesses attacker-controlled properties that return malicious template expressions. FreeMarker evaluates the malicious expressions with unrestricted class access.
+
+Prerequisites: Application uses Jooby FreeMarker module AND attacker can control template content or template model data. No special tools required - standard HTTP client is sufficient.
+
+=== Suggested Description of the Vulnerability for Use in the CVE ===
+The Jooby FreeMarker module (io.jooby:jooby-freemarker) in all versions through 4.0.11-SNAPSHOT configures Apache FreeMarker with TemplateClassResolver.UNRESTRICTED_RESOLVER, which allows FreeMarker templates to instantiate arbitrary Java classes via the ?new built-in function. This misconfiguration enables remote attackers to execute arbitrary code on the server when they can control template content or template model data. Attackers can exploit this by injecting malicious FreeMarker expressions that instantiate dangerous classes such as freemarker.template.utility.Execute to execute system commands, or java.io.FileReader to read sensitive files. The vulnerability affects all applications using the jooby-freemarker module and can lead to complete server compromise. This issue exists because FreemarkerModule.java (line 127) sets configuration.setNewBuiltinClassResolver(TemplateClassResolver.UNRESTRICTED_RESOLVER) instead of the recommended SAFER_RESOLVER.
+
+=== Discoverer(s)/Credits Info ===
+s1ain (Independent Security Researcher)
+Discovery Date: November 2025
+
+=== Reference(s) Info ===
+https://github.com/jooby-project/jooby
+https://github.com/jooby-project/jooby/blob/main/modules/jooby-freemarker/src/main/java/io/jooby/freemarker/FreemarkerModule.java
+https://freemarker.apache.org/docs/api/freemarker/core/TemplateClassResolver.html
+https://freemarker.apache.org/docs/app_faq.html#faq_template_uploading_security
+https://cwe.mitre.org/data/definitions/94.html
+https://cwe.mitre.org/data/definitions/95.html
+
+=== Additional Information ===
+CVSS:3.1 Vector String: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H
+CVSS Base Score: 8.8 (High) for authenticated endpoints, 9.8 (Critical) for unauthenticated endpoints
+
+CWE Classifications:
+- CWE-94: Improper Control of Generation of Code ('Code Injection')
+- CWE-95: Improper Neutralization of Directives in Dynamically Evaluated Code
+
+Root Cause: Use of UNRESTRICTED_RESOLVER instead of SAFER_RESOLVER in FreeMarker configuration
+
+Recommended Fix: Change line 127 in FreemarkerModule.java from configuration.setNewBuiltinClassResolver(TemplateClassResolver.UNRESTRICTED_RESOLVER) to configuration.setNewBuiltinClassResolver(TemplateClassResolver.SAFER_RESOLVER)
+
+Proof of Concept: Complete PoC available demonstrating command execution via payload: <#assign ex="freemarker.template.utility.Execute"?new()>${ex("whoami")}
+
+Affected Ecosystem: Maven Central package io.jooby:jooby-freemarker, thousands of applications potentially affected
+
+Vendor Notification: Pending (to be sent after CVE assignment)
