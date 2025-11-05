@@ -1,6 +1,6 @@
 # DHIS2 Core - Path Traversal in /api/apps Resources
 
-**Submitter:** s1ain  
+**Submitter:** sh7err
 **Discovery Date:** 2025-11-04  
 **Tested Version:** dhis2-core commit 5a9b5335e29947ecad6b9f74ef69b073f727a730  
 **Impact:** Arbitrary file read (Information Disclosure)  
@@ -37,4 +37,4 @@ Attackers can read secrets stored on the DHIS2 host (database credentials, TLS k
 - **2025-11-04:** Vulnerability discovered during code audit.
 
 ## Credits
-Discovered by s1ain.
+Discovered by sh7err.

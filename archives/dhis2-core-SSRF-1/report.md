@@ -1,6 +1,6 @@
 # DHIS2 Core - Route API Default SSRF
 
-**Submitter:** s1ain  
+**Submitter:** sh7err 
 **Discovery Date:** 2025-11-04  
 **Tested Version:** dhis2-core commit 5a9b5335e29947ecad6b9f74ef69b073f727a730  
 **Impact:** Server-Side Request Forgery (Information Disclosure / Pivoting)  
@@ -47,4 +47,4 @@ Attackers can coerce DHIS2 to contact arbitrary HTTPS endpoints, including inter
 - **2025-11-04:** Vulnerability discovered during code audit.
 
 ## Credits
-Discovered by s1ain.
+Discovered by sh7err.

@@ -33,7 +33,7 @@ An authenticated user with `F_ROUTE_PUBLIC_ADD` creates a route whose URL points
 DHIS2 Core’s Route feature trusts a default allowlist of `https://*`, effectively granting unrestricted outbound HTTPS access. Any authenticated user with route-management rights can register a route to internal services and retrieve their responses via `/api/routes/{id}/run/**`, enabling SSRF against the DHIS2 host environment.
 
 * **Discoverer(s)/Credits info**  
-s1ain
+sh7err
 
 * **Reference(s) info**  
 N/A (private report)
