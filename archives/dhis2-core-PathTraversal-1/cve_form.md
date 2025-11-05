@@ -33,7 +33,7 @@ An authenticated user (or anyone allowed to load app resources) requests `/api/a
 DHIS2 Core fails to sanitize user-controlled paths in the `/api/apps/{appKey}/**` resource handler when operating with the filesystem file store provider. A remote authenticated attacker can traverse out of the app directory and read arbitrary files from the DHIS2 host, leading to disclosure of sensitive data such as configuration files and credentials.
 
 * **Discoverer(s)/Credits info**  
-s1ain
+sh7err
 
 * **Reference(s) info**  
 N/A (coordinated disclosure, no public advisory yet)
