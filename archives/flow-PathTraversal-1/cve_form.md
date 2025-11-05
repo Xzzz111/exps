@@ -34,7 +34,7 @@ An attacker provides a crafted Node.js ZIP archive via a malicious or compromise
 Vaadin Flow from version 24.3.0 through 25.0-SNAPSHOT contains a ZIP extraction flaw in `DefaultArchiveExtractor`. When unpacking Node.js distributions, ZIP entries are written without canonical path validation, allowing crafted archives with `../` sequences to escape the target directory. An attacker controlling the download source can write arbitrary files on the developer or CI host, achieving remote code execution. Tar/GZip extraction validates paths, but the ZIP code path lacks equivalent checks. No patched version is available at the time of reporting.
 
 * **Discoverer(s)/Credits info**  
-s1ain (independent security researcher)
+sh7err (independent security researcher)
 
 * **Reference(s) info**  
 https://github.com/vaadin/flow/blob/main/flow-server/src/main/java/com/vaadin/flow/server/frontend/installer/DefaultArchiveExtractor.java  
