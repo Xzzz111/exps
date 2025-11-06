@@ -53,11 +53,6 @@ Successful exploitation enables arbitrary file overwrite anywhere beneath `Commo
 2. Harden `SafeZipFileUtils`/`ValidationPaths` to reject traversal tokens (`..`, absolute paths, drive letters) rather than blindly accepting `normalize()` results.
 3. Optionally maintain an explicit whitelist of permissible subdirectories and file types.
 
-## Disclosure Timeline
-
-- 2024-XX-XX: Vulnerability discovered during source audit.
-- 2024-XX-XX: Vendor notification (_pending_).
-- 2024-XX-XX: Requested CVE ID.
 
 ## Credits
 
