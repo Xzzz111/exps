@@ -50,12 +50,6 @@ Similar payloads can manipulate reports, user settings, or any other session-aut
 2. For API clients that cannot support cookies/CSRF tokens, expose dedicated stateless endpoints (e.g., via HTTP Basic or token-based authentication) while keeping CSRF enabled for browser-based traffic.
 3. Consider enforcing SameSite cookies and adding per-request nonces as defense-in-depth.
 
-## Disclosure Timeline
-
-- 2024-XX-XX: Vulnerability discovered during source audit.
-- 2024-XX-XX: Vendor notification (_pending_).
-- 2024-XX-XX: Requested CVE ID.
-
 ## Credits
 
 Discovered by sh7err@vEcho.
