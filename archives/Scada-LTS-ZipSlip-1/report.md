@@ -1,7 +1,6 @@
 # Security Vulnerability Report: Scada-LTS Zip Slip Arbitrary File Write
 
 **Submitter:** sh7err@vEcho  
-**Discovery date:** 2024-XX-XX  
 **Tested revision:** commit 1cfaed4b35117e4871bc3dfeae073f61d8e3bb3d (branch: develop)
 
 ## Summary
