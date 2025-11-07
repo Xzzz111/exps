@@ -38,8 +38,5 @@ Attackers can fully bypass the approval flow to force any task into an approved 
 2. Remove `/api/**` from the anonymous filter chain or introduce a dedicated signature-based authentication filter for the API namespace.
 3. Consider recording the acting identity for audit purposes and validating that the caller is assigned to the specific approval node.
 
-## Timeline
-- 2025-02-14 – Vulnerability discovered during code audit.
-
 ## References
 - https://github.com/zhaoyachao/zdh_web/blob/63125e22e7afa0e1649d0d154562823b5fd4c5c9/src/main/java/com/zyc/zdh/api/ProcessFlowApi.java
