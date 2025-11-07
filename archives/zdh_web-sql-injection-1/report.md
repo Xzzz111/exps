@@ -36,8 +36,5 @@ Any authenticated user who can call `/data_ware_house_list6` can perform SQL inj
 2. Strictly validate `label_params` against an allowlist of alphanumeric characters before constructing the query.
 3. Consider normalizing labels into a separate relation to eliminate the need for dynamic SQL entirely.
 
-## Timeline
-- 2025-02-14 – Vulnerability discovered during code audit.
-
 ## References
 - https://github.com/zhaoyachao/zdh_web/blob/63125e22e7afa0e1649d0d154562823b5fd4c5c9/src/main/java/com/zyc/zdh/dao/IssueDataMapper.java
